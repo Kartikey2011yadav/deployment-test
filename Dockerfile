@@ -28,9 +28,7 @@ RUN pip install --upgrade pip
 # Install Python dependencies from requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Expose the port your app runs on
-EXPOSE 8080
 
 # Specify the command to run the web service
-CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:8080", "main:app"]
+CMD ["gunicorn", "main:app"]
 
