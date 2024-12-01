@@ -11,7 +11,6 @@ import random
 import os
 import time
 from flask_cors import CORS
-import os
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
