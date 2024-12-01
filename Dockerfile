@@ -1,27 +1,36 @@
-# Use the Python 3 official image
-# https://hub.docker.com/_/python
-FROM python:3
+# Use the Python 3.10 slim image for compatibility with TensorFlow
+FROM python:3.10-slim
 
-# Run in unbuffered mode
+# Set environment variables for unbuffered logs and Python performance
 ENV PYTHONUNBUFFERED=1 
 
-# Create and change to the app directory.
+# Set the working directory
 WORKDIR /app
 
-# Copy local code to the container image.
-COPY . ./
+# Copy local code to the container image
+COPY . .
 
-# Install project dependencies
-RUN apt-get update && apt-get install -y \ 
+# Install system dependencies required for TensorFlow, OpenCV, and PortAudio
+RUN apt-get update && apt-get install -y --no-install-recommends \
     portaudio19-dev \
     libhdf5-dev \
     libhdf5-serial-dev \
-    libhdf5-103 \
     libatlas-base-dev \
-    gfortran
+    gfortran \
+    libgl1-mesa-glx \
+    libglib2.0-0 \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# Upgrade pip to the latest version
 RUN pip install --upgrade pip
-RUN apt-get install -y libgl1-mesa-glx
+
+# Install Python dependencies from requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Run the web service on container startup.
-CMD ["gunicorn", "main:app"]
+# Expose the port your app runs on
+EXPOSE 8080
+
+# Specify the command to run the web service
+CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:8080", "main:app"]
+
