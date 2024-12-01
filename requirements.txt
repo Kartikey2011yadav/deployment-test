@@ -6,3 +6,4 @@ PyAudio==0.2.11
 SpeechRecognition==3.10.4
 setuptools==74.1.2
 cloudinary==1.37.0
+gunicorn==23.0.0
