@@ -8,3 +8,8 @@ setuptools==74.1.2
 cloudinary==1.37.0
 gunicorn==23.0.0
 opencv-python==4.10.0.84
+click==7.1.2
+itsdangerous==1.1.0
+Jinja2==2.11.3
+MarkupSafe==1.1.1
+Werkzeug==1.0.1
