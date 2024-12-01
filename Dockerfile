@@ -12,7 +12,8 @@ WORKDIR /app
 COPY . ./
 
 # Install project dependencies
-RUN apt-get update && apt-get install -y \ portaudio19-dev \
+RUN apt-get update && apt-get install -y \ 
+    portaudio19-dev \
     libhdf5-dev \
     libhdf5-serial-dev \
     libhdf5-103 \
