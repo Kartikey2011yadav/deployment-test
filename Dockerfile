@@ -12,7 +12,12 @@ WORKDIR /app
 COPY . ./
 
 # Install project dependencies
-RUN apt-get update && apt-get install -y portaudio19-dev
+RUN apt-get update && apt-get install -y \ portaudio19-dev \
+    libhdf5-dev \
+    libhdf5-serial-dev \
+    libhdf5-103 \
+    libatlas-base-dev \
+    gfortran
 RUN pip install --upgrade pip
 RUN apt-get install -y libgl1-mesa-glx
 RUN pip install --no-cache-dir -r requirements.txt
