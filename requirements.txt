@@ -2,7 +2,7 @@ Flask==3.0.3
 Flask-Cors==4.0.0
 opencv-python==4.10.0.84
 mtcnn==0.1.1
-PyAudio==0.2.14
+PyAudio==0.2.11
 SpeechRecognition==3.10.4
 setuptools==74.1.2
 cloudinary==1.37.0
