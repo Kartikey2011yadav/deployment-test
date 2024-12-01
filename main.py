@@ -13,7 +13,7 @@ import time
 from flask_cors import CORS
 import os
 
-app = Flask(_name_)
+app = Flask(__name__)
 CORS(app, resources={r"/": {"origins": ""}})
 port = int(os.environ.get("PORT", 8000))  # Railway uses dynamic ports
 app.run(host='0.0.0.0', port=port)
