@@ -11,9 +11,10 @@ import random
 import os
 import time
 from flask_cors import CORS
+import os
 
-app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "*"}})
+app = Flask(_name_)
+CORS(app, resources={r"/": {"origins": ""}})
 port = int(os.environ.get("PORT", 8000))  # Railway uses dynamic ports
 app.run(host='0.0.0.0', port=port)
 
@@ -248,5 +249,5 @@ def video_feed():
     return Response(generate_frames(), 
                    mimetype='multipart/x-mixed-replace; boundary=frame')
 
-if __name__ == '__main__':
+if _name_ == '_main_':
     app.run(debug=True)
