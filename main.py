@@ -15,8 +15,9 @@ import os
 
 app = Flask(__name__)
 CORS(app, resources={r"/": {"origins": ""}})
-port = int(os.environ.get("PORT", 8000))  # Railway uses dynamic ports
-app.run(host='0.0.0.0', port=port)
+# port = int(os.environ.get("PORT", 8000))  # Railway uses dynamic ports
+# app.run(host='0.0.0.0', port=port)
+app.run(debug=True, port=os.getenv("PORT", default=8000))
 
 # Initialize global variables
 cap = None
