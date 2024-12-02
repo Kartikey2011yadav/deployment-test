@@ -28,7 +28,10 @@ RUN pip install --upgrade pip
 # Install Python dependencies from requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-EXPOSE 5123
+
 
 # Specify the command to run the web service
-CMD ["gunicorn", "main:app"]
+EXPOSE 8007
+CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:8007", "main:app"]
+
+# CMD ["gunicorn", "main:app"]
