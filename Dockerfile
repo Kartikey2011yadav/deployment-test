@@ -29,4 +29,4 @@ RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Specify the command to run the web service
-CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:" + os.environ.get("PORT", "8000"), "main:app"]
+CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:" + os.environ.get("PORT", "51234"), "main:app"]
